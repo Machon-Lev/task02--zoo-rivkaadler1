@@ -1,0 +1,11 @@
+﻿  Main.cpp
+C:\Users\User\source\repos\excellenteam\Project1\Main.cpp(12,22): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Zoo.cpp
+C:\Users\User\source\repos\excellenteam\Project1\Zoo.cpp(105,25): warning C4018: '<': signed/unsigned mismatch
+C:\Users\User\source\repos\excellenteam\Project1\Zoo.cpp(114,25): warning C4018: '<': signed/unsigned mismatch
+C:\Users\User\source\repos\excellenteam\Project1\Zoo.cpp(140,25): warning C4018: '<': signed/unsigned mismatch
+C:\Users\User\source\repos\excellenteam\Project1\Zoo.cpp(152,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\User\source\repos\excellenteam\Project1\Zoo.cpp(192,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\User\source\repos\excellenteam\Project1\Zoo.cpp(200,23): warning C4018: '<': signed/unsigned mismatch
+  Generating Code...
+  Project1.vcxproj -> C:\Users\User\source\repos\excellenteam\Project1\Debug\Project1.exe
