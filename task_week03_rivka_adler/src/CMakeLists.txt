@@ -1,0 +1,1 @@
+target_sources (task_week03_rivka_adler PRIVATE "Lion.cpp" "Location.cpp" "Monkey.cpp" "Clownfish.cpp" "Zoo.cpp" "Main.cpp")
