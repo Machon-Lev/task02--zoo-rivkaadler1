@@ -1,1 +1,1 @@
-target_include_directories (task_week03_rivka_adler PRIVATE ${CMAKE_CURRENT_LIST_DIR})
+target_include_directories (task_week03_rivka_adler  PRIVATE ${CMAKE_CURRENT_LIST_DIR})

@@ -8,6 +8,7 @@ if (MSVC)
     add_compile_options (/W4 /permissive- /Zc:externConstexpr /Zc:inline)
 endif ()
 
+
 add_executable (task_week03_rivka_adler "")
 add_subdirectory (include)
 add_subdirectory (src)

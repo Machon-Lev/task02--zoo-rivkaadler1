@@ -1,8 +1,9 @@
 #include "Monkey.h"
-/*
-* A monkey randomly jumps a square or two in a random direction in straight lines.
-The draw of step size and direction happens again every five turns, regardless of move.
-*/
+
+Monkey::Monkey(const std::string& name, const Location& loc)
+    : ZooAnimal(name, loc), _turn_num(0), _step_size(1){
+}
+
 void Monkey::step()
 {
     int diff = 0;
@@ -133,4 +134,8 @@ void Monkey::turnHorizontally()
         _dir = 0;
         break;
     }
+}
+
+char Monkey::getInitial() const {
+    return 'M';
 }

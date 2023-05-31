@@ -1,37 +1,40 @@
 #pragma once
 #include <iostream>
+
+/**
+ * @struct Location
+ * @brief Represents a location with row and column coordinates.
+ *
+ * The Location struct represents a location in a two-dimensional space.
+ * It contains row and column coordinates.
+ */
 struct Location {
     int _row;
     int _col;
-    Location(int r = 0, int c = 0) : _row(r), _col(c) {}
+
+    /**
+     * @brief Constructs a Location object with the specified row and column coordinates.
+     *
+     * @param r The row coordinate.
+     * @param c The column coordinate.
+     */
+    Location(int r = 0, int c = 0);
 
     // output operator
-    friend std::ostream& operator<<(std::ostream& os, const Location& loc) {
-        os << "(" << loc._row << ", " << loc._col << ")";
-        return os;
-    }
+    friend std::ostream& operator<<(std::ostream& os, const Location& loc);
 
     // addition assignment operator
-    Location& operator+=(const Location& rhs) {
-        _row += rhs._row;
-        _col += rhs._col;
-        return *this;
-    }
+    Location& operator+=(const Location& rhs);
 
     // addition assignment operator
-    Location& operator+=(const int num) {
-        _row += num;
-        _col += num;
-        return *this;
-    }
+    Location& operator+=(const int num);
 
     // equality operator
-    bool operator==(const Location& rhs) const {
-        return (_row == rhs._row && _col == rhs._col);
-    }
+    bool operator==(const Location& rhs) const;
 
     // inequality operator
-    bool operator!=(const Location& rhs) const {
-        return !(*this == rhs);
-    }
+    bool operator!=(const Location& rhs) const;
 };
+
+
+
