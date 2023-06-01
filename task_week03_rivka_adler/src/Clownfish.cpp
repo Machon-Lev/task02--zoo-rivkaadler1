@@ -1,8 +1,12 @@
 #include "Clownfish.h"
-/*
-* A clownfish swims only one square at a time. The direction is chosen randomly among all possible directions.
-The draw of the direction is only with the move command.
-*/
+
+Clownfish::Clownfish(const std::string& name, const Location& loc)
+    : ZooAnimal(name, loc) {}
+
+char Clownfish::getInitial() const {
+    return 'C';
+}
+
 void Clownfish::step()
 {
     int diff = 0;

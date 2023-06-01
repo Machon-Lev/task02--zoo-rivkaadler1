@@ -10,7 +10,6 @@ Zoo::Zoo()
 }
 
 
-
 void Zoo::run()
 {
     // Print the initial state of the zoo
