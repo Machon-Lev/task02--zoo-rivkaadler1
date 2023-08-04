@@ -25,7 +25,10 @@ public:
      * @brief Default constructor for the Zoo class.
      */
     Zoo();
-
+    /**
+     * @brief destructor for the Zoo class.
+    */
+    ~Zoo();
     /**
      * @brief Runs the zoo management program.
      *

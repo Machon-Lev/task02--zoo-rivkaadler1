@@ -9,6 +9,17 @@ Zoo::Zoo()
     animals.push_back(new Clownfish("Nemo", Location(rand() % 20, rand() % 40)));
 }
 
+Zoo::~Zoo()
+{
+    // Free memory for each ZooAnimal object in the animals vector
+    for (ZooAnimal* animal : animals)
+    {
+        delete animal;
+    }
+
+    // Clear the vector to avoid dangling pointers
+    animals.clear();
+}
 
 void Zoo::run()
 {
