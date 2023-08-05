@@ -1,8 +1,13 @@
 #include "Lion.h"
 
-/*A lion always moves two spaces and always to the right or left.He keeps the same direction until he
- reaches the edge of the board and then turns back and so on, or until it stops (after stop) and then with the 
- next move command it will randomly re-choose its direction*/
+
+Lion::Lion(const std::string& name, const Location& loc)
+    : ZooAnimal(name, loc) {}
+
+char Lion::getInitial() const {
+    return 'L';
+}
+
 void Lion::step()
 {
     if (!_stopped)
@@ -48,4 +53,11 @@ void Lion::move()
             _stopped = false;
         }
     }
+}
+
+void Lion::turnVertically() {
+}
+
+void Lion::turnHorizontally() {
+    _dir *= -1;
 }

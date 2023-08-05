@@ -1,28 +1,28 @@
-#include <iostream>
-struct Location {
-    int row;
-    int col;
+#include "Location.h"
 
-    // output operator
-    friend std::ostream& operator<<(std::ostream& os, const Location& loc) {
-        os << "(" << loc.row << ", " << loc.col << ")";
-        return os;
-    }
+Location::Location(int r, int c) : _row(r), _col(c) {}
 
-    // addition assignment operator
-    Location& operator+=(const Location& rhs) {
-        row += rhs.row;
-        col += rhs.col;
-        return *this;
-    }
+std::ostream& operator<<(std::ostream& os, const Location& loc) {
+    os << "(" << loc._row << ", " << loc._col << ")";
+    return os;
+}
 
-    // equality operator
-    bool operator==(const Location& rhs) const {
-        return (row == rhs.row && col == rhs.col);
-    }
+Location& Location::operator+=(const Location& rhs) {
+    _row += rhs._row;
+    _col += rhs._col;
+    return *this;
+}
 
-    // inequality operator
-    bool operator!=(const Location& rhs) const {
-        return !(*this == rhs);
-    }
-};
+Location& Location::operator+=(const int num) {
+    _row += num;
+    _col += num;
+    return *this;
+}
+
+bool Location::operator==(const Location& rhs) const {
+    return (_row == rhs._row && _col == rhs._col);
+}
+
+bool Location::operator!=(const Location& rhs) const {
+    return !(*this == rhs);
+}

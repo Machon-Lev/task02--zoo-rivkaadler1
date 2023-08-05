@@ -9,96 +9,113 @@ Zoo::Zoo()
     animals.push_back(new Clownfish("Nemo", Location(rand() % 20, rand() % 40)));
 }
 
-
-
-void Zoo::run()
+Zoo::~Zoo()
 {
-    // Print the initial state of the zoo
-    cout << "Welcome to the zoo!\n\n";
+    // Free memory for each ZooAnimal object in the animals vector
+    for (ZooAnimal* animal : animals)
+    {
+        delete animal;
+    }
+
+    // Clear the vector to avoid dangling pointers
+    animals.clear();
+}
+
+void Zoo::printHelp() {
+    cout << "commands:\n";
+    cout << "stop - stop a specified animal from moving\n";
+    cout << "move - start a specified animal moving again\n";
+    cout << "create - create a new animal\n";
+    cout << "del - delete a specified animal\n";
+    cout << "delAll - delete all animals of a specified type\n";
+    cout << "help - display this help text\n";
+    cout << "exit - exit the program\n";
+    cout << ". - advance to the next step\n";
+    cout << "\n";
+}
+
+void Zoo::printZooState() {
     printMap();
     printList();
-    cout << "\n";
+}
+
+void Zoo::run() {
+    cout << "Welcome to the zoo!\n\n";
+    printZooState();
+
     while (true) {
-        _valid_command = true;
-        try
-        {
-            // Get the user's command
-            string command, index, name;
-            char type = 'M';
-            int num;
+        try {
+            string command;
             cout << "Enter command (type 'help' for a list of commands): ";
             getline(cin, command);
 
-            // Parse the command and perform the appropriate action
             if (command == "stop") {
-                cout << "Enter the index of the animal you want to stop:";
-                cin >> index;
-                num = stoi(index);
-                stop(num);
+                int index = getAnimalIndex();
+                stop(index);
             }
             else if (command == "move") {
-                cout << "Enter the index of the animal you want to move:";
-                cin >> index;
-                num = stoi(index);
-                move(num);
+                int index = getAnimalIndex();
+                move(index);
             }
             else if (command == "create") {
-                cout << "Enter the first letter of the type of the animal you want to create:";
-                cin >> type;
-                cout << "Enter the name of the animal you want to create:";
-                cin >> name;
+                char type = getAnimalType();
+                string name = getAnimalName();
                 create(type, name);
             }
             else if (command == "del") {
-                cout << "Enter the index of the animal you want to delete:";
-                cin >> index;
-                num = stoi(index);
-                cout << num;
-                del(num);
+                int index = getAnimalIndex();
+                del(index);
             }
             else if (command == "delAll") {
-                cout << "Enter the first letter of the type of the animals you want to delete:";
-                type = static_cast<char>(std::cin.get());
+                char type = getAnimalType();
                 delAll(type);
             }
             else if (command == "help") {
-                // Print the help text
-                cout << "commands:\n";
-                cout << "stop-stop a specified animal from moving\n";
-                cout << "move - start a specified animal moving again\n";
-                cout << "create- create a new animal\n";
-                cout << "del - delete a specified animal\n";
-                cout << "delAll - delete all animals of a specified type\n";
-                cout << "help - display this help text\n";
-                cout << "exit - exit the program\n";
-                cout << ". - advance to the next step\n";
-                cout << "\n";
+                printHelp();
             }
             else if (command == "exit") {
-                // Exit the program
                 break;
             }
             else if (command == ".") {
-
+                // Do nothing for now
             }
             else {
-                // Invalid command
                 cout << "Invalid command. Type 'help' for a list of commands.\n";
-                _valid_command = false;
             }
-            if (_valid_command)
-            {
-                stepAll();
-                printMap();
-                printList();
-            }
+
+            stepAll();
+            printZooState();
         }
-        catch (const std::exception& e)
-        {
+        catch (const std::exception& e) {
             std::cerr << "Exception caught: " << e.what() << std::endl;
         }
     }
 }
+
+// Helper functions for getting user input
+int Zoo::getAnimalIndex() {
+    int index;
+    cout << "Enter the index of the animal: ";
+    cin >> index;
+    cin.ignore(); // Ignore any leftover newlines
+    return index;
+}
+
+char Zoo::getAnimalType() {
+    char type;
+    cout << "Enter the first letter of the type of the animal: ";
+    cin >> type;
+    cin.ignore(); // Ignore any leftover newlines
+    return type;
+}
+
+string Zoo::getAnimalName() {
+    string name;
+    cout << "Enter the name of the animal: ";
+    getline(cin, name);
+    return name;
+}
+
 
 void Zoo::stop(int num)
 {
