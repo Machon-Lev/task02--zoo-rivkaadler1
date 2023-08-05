@@ -29,6 +29,10 @@ public:
      * @brief destructor for the Zoo class.
     */
     ~Zoo();
+    
+    void printZooState();
+
+    void printHelp();
     /**
      * @brief Runs the zoo management program.
      *
@@ -37,9 +41,16 @@ public:
      */
     void run();
 
+    
+    int getAnimalIndex();
+
+    char getAnimalType();
+
 private:
     bool _valid_command = true; /**< Flag indicating if the entered command is valid or not. */
     vector<ZooAnimal*> animals; /**< A collection of ZooAnimal objects representing the animals in the zoo. */
+
+    string getAnimalName();
 
     /**
      * @brief Stops the specified animal from moving.
